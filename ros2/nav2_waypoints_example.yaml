@@ -1,0 +1,35 @@
+# Example Nav2 waypoints for manual evaluation setup.
+# Replace these map-frame poses with waypoints measured in your own map.
+# These are placeholders for format only; they are not benchmark results.
+frame_id: map
+waypoints:
+  - name: start_area
+    position:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+  - name: hallway_turn
+    position:
+      x: 1.0
+      y: 0.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.7071068
+      w: 0.7071068
+  - name: return_area
+    position:
+      x: 0.0
+      y: 1.0
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 1.0
+      w: 0.0

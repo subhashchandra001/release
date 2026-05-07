@@ -1,0 +1,16 @@
+utility:
+  astar_navigation:
+    enabled: true
+    obstacle_threshold: 50
+    allow_unknown: false
+    diagonal: false
+    routes_config: data/annotations/nav_goals.yaml
+    routes: []
+  map_compactness:
+    enabled: true
+    target_label: 100
+  coverage:
+    enabled: true
+  relocalization:
+    enabled: false
+    max_distance: 64

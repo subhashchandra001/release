@@ -1,0 +1,24 @@
+release_policy:
+  raw_rosbags:
+    default: private
+    commit_to_git: false
+  raw_images:
+    default: private
+    commit_to_git: false
+  release_allowed:
+    - staged_keyframes
+    - redacted_keyframes
+    - reviewed_occupancy_maps
+    - reviewed_trajectories
+    - semantic_annotations
+    - processed_descriptors
+    - filtered_artifacts
+    - generated_result_csvs
+  requires_review:
+    - occupancy_maps
+    - trajectories
+    - keyframes
+    - pointclouds
+    - descriptors
+  croissant_required_if_dataset_released: true
+  notes: "Never fabricate dataset metadata or release raw private data."

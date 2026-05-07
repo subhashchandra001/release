@@ -1,0 +1,13 @@
+topics:
+  scan: /scan
+  odom: /odom
+  tf: /tf
+  tf_static: /tf_static
+  rgb: /oakd/rgb/preview/image_raw
+  depth: null
+  camera_info: /oakd/rgb/preview/camera_info
+  map: /map
+  pose: /pose
+  cmd_vel: /cmd_vel
+  imu: /imu
+  battery_state: /battery_state

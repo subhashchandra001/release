@@ -1,0 +1,10 @@
+paper:
+  anonymous: true
+  title: "PrivateMap-Bench: A Privacy-Utility Benchmark for Indoor SLAM Map Sharing"
+  venue: NeurIPS 2026
+  tex_path: paper/neurips_2026.tex
+  checklist_path: paper/checklist.tex
+  references_path: paper/references.bib
+  figures_dir: data/paper_assets/figures
+  tables_dir: data/paper_assets/tables
+  build_from_results_only: true

@@ -1,0 +1,13 @@
+repo_root: .
+data_dir: data
+raw_rosbags_dir: data/raw_rosbags
+maps_dir: data/maps
+annotations_dir: data/annotations
+processed_dir: data/processed
+filtered_dir: data/filtered
+results_dir: data/results
+paper_assets_dir: data/paper_assets
+figures_dir: data/paper_assets/figures
+tables_dir: data/paper_assets/tables
+paper_dir: paper
+paper_figures_dir: paper/figures

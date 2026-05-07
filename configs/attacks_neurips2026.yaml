@@ -1,0 +1,22 @@
+attacks:
+  floor_plan_leakage:
+    enabled: true
+    artifact_type: occupancy_map
+  trajectory_leakage:
+    enabled: true
+    artifact_type: trajectory
+  room_graph_leakage:
+    enabled: true
+    artifact_type: occupancy_map
+  routine_leakage:
+    enabled: true
+    artifact_type: trajectory
+  object_leakage:
+    enabled: false
+    artifact_type: detections
+  geometry_leakage:
+    enabled: false
+    artifact_type: pointcloud
+  descriptor_leakage:
+    enabled: false
+    artifact_type: descriptors

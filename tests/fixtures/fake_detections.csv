@@ -1,0 +1,3 @@
+run_id,keyframe_id,image_path,class_name,confidence,xmin,ymin,xmax,ymax,map_x,map_y,is_sensitive
+run_a,kf_0001,data/processed/run_a/rgb/kf_0001.png,screen,1.0,1,2,10,12,0.5,1.5,true
+run_a,kf_0002,data/processed/run_a/rgb/kf_0002.png,chair,1.0,4,5,20,25,,,false

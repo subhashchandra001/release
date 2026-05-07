@@ -1,0 +1,93 @@
+occupancy_filters:
+  downsample:
+    enabled: false
+    factor: 2
+  blur:
+    enabled: true
+    sigma: 1.0
+  noise:
+    enabled: true
+    probability: 0.02
+    seed: 7
+  remove_small_components:
+    enabled: true
+    min_size: 8
+trajectory_filters:
+  downsample:
+    enabled: true
+    step: 2
+  spatial_quantize:
+    enabled: true
+    grid_size: 0.5
+  room_sequence:
+    enabled: false
+    rooms: []
+  coverage_summary:
+    enabled: false
+keyframe_filters:
+  mask_sensitive_objects:
+    enabled: false
+    fill_value: 0
+semantic_filters:
+  redact_sensitive_classes:
+    enabled: false
+pointcloud_filters:
+  voxel_downsample:
+    enabled: false
+    voxel_size: 0.05
+descriptor_filters:
+  randomize:
+    enabled: false
+    bit_flip_probability: 0.05
+
+sweeps:
+  occupancy:
+    - name: blur_sigma_0_5
+      filter: blur
+      sigma: 0.5
+    - name: blur_sigma_1_0
+      filter: blur
+      sigma: 1.0
+    - name: blur_sigma_2_0
+      filter: blur
+      sigma: 2.0
+    - name: noise_p_0_01
+      filter: noise
+      probability: 0.01
+      seed: 7
+    - name: noise_p_0_05
+      filter: noise
+      probability: 0.05
+      seed: 7
+    - name: noise_p_0_10
+      filter: noise
+      probability: 0.10
+      seed: 7
+    - name: remove_components_8
+      filter: remove_small_components
+      min_size: 8
+    - name: remove_components_25
+      filter: remove_small_components
+      min_size: 25
+    - name: remove_components_50
+      filter: remove_small_components
+      min_size: 50
+  trajectory:
+    - name: traj_downsample_2
+      filter: downsample
+      step: 2
+    - name: traj_downsample_4
+      filter: downsample
+      step: 4
+    - name: traj_downsample_8
+      filter: downsample
+      step: 8
+    - name: quantize_0_25m
+      filter: spatial_quantize
+      grid_size: 0.25
+    - name: quantize_0_5m
+      filter: spatial_quantize
+      grid_size: 0.5
+    - name: quantize_1_0m
+      filter: spatial_quantize
+      grid_size: 1.0

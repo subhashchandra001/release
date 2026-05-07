@@ -1,0 +1,18 @@
+sensitive_classes:
+  - person
+  - face
+  - screen
+  - document
+  - medication
+  - badge
+  - license_plate
+  - keyboard
+public_classes:
+  - wall
+  - door
+  - chair
+  - table
+  - floor
+  - ceiling
+  - cabinet
+  - shelf

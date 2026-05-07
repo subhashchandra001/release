@@ -1,0 +1,121 @@
+experiment:
+  name: privatemap_bench_neurips2026
+  anonymous: true
+  random_seed: 7
+  robot: turtlebot4
+  collection_mode: repeated_single_robot_runs_multi_environment
+  runs:
+    - run_id: env1_A_mapping
+      environment_id: env1
+      purpose: mapping
+      map_yaml: data/processed/env1_A_mapping/map.yaml
+      trajectory_csv: data/processed/env1_A_mapping/trajectory.csv
+      keyframes_csv: data/processed/env1_A_mapping/keyframes.csv
+      detections_csv: data/processed/env1_A_mapping/detections.csv
+    - run_id: env1_B_relocalization
+      environment_id: env1
+      purpose: relocalization
+      map_yaml: data/processed/env1_A_mapping/map.yaml
+      trajectory_csv: data/processed/env1_B_relocalization/trajectory.csv
+      keyframes_csv: data/processed/env1_B_relocalization/keyframes.csv
+      detections_csv: data/processed/env1_B_relocalization/detections.csv
+    - run_id: env1_C_object_proxy
+      environment_id: env1
+      purpose: object_proxy
+      map_yaml: data/processed/env1_A_mapping/map.yaml
+      trajectory_csv: data/processed/env1_C_object_proxy/trajectory.csv
+      keyframes_csv: data/processed/env1_C_object_proxy/keyframes.csv
+      detections_csv: data/processed/env1_C_object_proxy/detections.csv
+    - run_id: env1_D_repeated_route
+      environment_id: env1
+      purpose: repeated_route
+      map_yaml: data/processed/env1_A_mapping/map.yaml
+      trajectory_csv: data/processed/env1_D_repeated_route/trajectory.csv
+      keyframes_csv: data/processed/env1_D_repeated_route/keyframes.csv
+      detections_csv: data/processed/env1_D_repeated_route/detections.csv
+    - run_id: env1_E_privacy_stress
+      environment_id: env1
+      purpose: privacy_stress
+      map_yaml: data/processed/env1_A_mapping/map.yaml
+      trajectory_csv: data/processed/env1_E_privacy_stress/trajectory.csv
+      keyframes_csv: data/processed/env1_E_privacy_stress/keyframes.csv
+      detections_csv: data/processed/env1_E_privacy_stress/detections.csv
+
+    - run_id: env2_A_mapping
+      environment_id: env2
+      purpose: mapping
+      map_yaml: data/processed/env2_A_mapping/map.yaml
+      trajectory_csv: data/processed/env2_A_mapping/trajectory.csv
+      keyframes_csv: data/processed/env2_A_mapping/keyframes.csv
+      detections_csv: data/processed/env2_A_mapping/detections.csv
+    - run_id: env2_B_relocalization
+      environment_id: env2
+      purpose: relocalization
+      map_yaml: data/processed/env2_A_mapping/map.yaml
+      trajectory_csv: data/processed/env2_B_relocalization/trajectory.csv
+      keyframes_csv: data/processed/env2_B_relocalization/keyframes.csv
+      detections_csv: data/processed/env2_B_relocalization/detections.csv
+    - run_id: env2_C_object_proxy
+      environment_id: env2
+      purpose: object_proxy
+      map_yaml: data/processed/env2_A_mapping/map.yaml
+      trajectory_csv: data/processed/env2_C_object_proxy/trajectory.csv
+      keyframes_csv: data/processed/env2_C_object_proxy/keyframes.csv
+      detections_csv: data/processed/env2_C_object_proxy/detections.csv
+    - run_id: env2_D_repeated_route
+      environment_id: env2
+      purpose: repeated_route
+      map_yaml: data/processed/env2_A_mapping/map.yaml
+      trajectory_csv: data/processed/env2_D_repeated_route/trajectory.csv
+      keyframes_csv: data/processed/env2_D_repeated_route/keyframes.csv
+      detections_csv: data/processed/env2_D_repeated_route/detections.csv
+    - run_id: env2_E_privacy_stress
+      environment_id: env2
+      purpose: privacy_stress
+      map_yaml: data/processed/env2_A_mapping/map.yaml
+      trajectory_csv: data/processed/env2_E_privacy_stress/trajectory.csv
+      keyframes_csv: data/processed/env2_E_privacy_stress/keyframes.csv
+      detections_csv: data/processed/env2_E_privacy_stress/detections.csv
+
+    - run_id: env3_A_mapping
+      environment_id: env3
+      purpose: mapping
+      map_yaml: data/processed/env3_A_mapping/map.yaml
+      trajectory_csv: data/processed/env3_A_mapping/trajectory.csv
+      keyframes_csv: data/processed/env3_A_mapping/keyframes.csv
+      detections_csv: data/processed/env3_A_mapping/detections.csv
+    - run_id: env3_B_relocalization
+      environment_id: env3
+      purpose: relocalization
+      map_yaml: data/processed/env3_A_mapping/map.yaml
+      trajectory_csv: data/processed/env3_B_relocalization/trajectory.csv
+      keyframes_csv: data/processed/env3_B_relocalization/keyframes.csv
+      detections_csv: data/processed/env3_B_relocalization/detections.csv
+    - run_id: env3_C_object_proxy
+      environment_id: env3
+      purpose: object_proxy
+      map_yaml: data/processed/env3_A_mapping/map.yaml
+      trajectory_csv: data/processed/env3_C_object_proxy/trajectory.csv
+      keyframes_csv: data/processed/env3_C_object_proxy/keyframes.csv
+      detections_csv: data/processed/env3_C_object_proxy/detections.csv
+    - run_id: env3_D_repeated_route
+      environment_id: env3
+      purpose: repeated_route
+      map_yaml: data/processed/env3_A_mapping/map.yaml
+      trajectory_csv: data/processed/env3_D_repeated_route/trajectory.csv
+      keyframes_csv: data/processed/env3_D_repeated_route/keyframes.csv
+      detections_csv: data/processed/env3_D_repeated_route/detections.csv
+    - run_id: env3_E_privacy_stress
+      environment_id: env3
+      purpose: privacy_stress
+      map_yaml: data/processed/env3_A_mapping/map.yaml
+      trajectory_csv: data/processed/env3_E_privacy_stress/trajectory.csv
+      keyframes_csv: data/processed/env3_E_privacy_stress/keyframes.csv
+      detections_csv: data/processed/env3_E_privacy_stress/detections.csv
+
+paths_config: configs/paths.yaml
+topics_config: configs/topics_turtlebot4.yaml
+filters_config: configs/filters_neurips2026.yaml
+attacks_config: configs/attacks_neurips2026.yaml
+utility_config: configs/utility_neurips2026.yaml
+paper_config: configs/paper.yaml
