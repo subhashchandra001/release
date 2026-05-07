@@ -1,106 +1,137 @@
 # PrivateMap-Bench NeurIPS 2026 Code Release
 
-This folder is the sanitized executable code package for reproducing the
-PrivateMap-Bench NeurIPS 2026 processed-artifact benchmark results. It is meant
-to be used with the matching dataset package:
+  This repository contains the anonymized executable code package for reproducing
+  the PrivateMap-Bench NeurIPS 2026 processed-artifact benchmark results.
 
-- `dataset_neurips2026_sanitized/`
-- `dataset_neurips2026_sanitized.zip`
+  The benchmark is designed to be used with the matching sanitized dataset release.
+  The code repository itself does not include raw ROS bags, paper drafts, Git
+  history, local build files, machine-specific caches, or unreviewed image
+  artifacts.
 
-The code package does not include raw ROS bags, processed data, paper drafts,
-Git history, local build files, or machine-specific caches.
+  ## Contents
 
-## Contents
+  - `src/privatemap/`: benchmark Python package.
+  - `scripts/`: filtering, privacy attack, utility evaluation, aggregation,
+    figure, table, export, and validation scripts.
+  - `configs/`: synchronized NeurIPS 2026 benchmark configurations.
+  - `tests/`: unit tests and small synthetic fixtures.
+  - `ros2/`: optional TurtleBot4 helper scripts for future data collection.
+  - `docs/`: schema, release policy, reproduction notes, and dataset/benchmark
+    cards.
 
-- `src/privatemap/`: benchmark Python package.
-- `scripts/`: offline filtering, privacy attack, utility, aggregation, figure,
-  table, and validation scripts.
-- `configs/`: NeurIPS 2026 synchronized benchmark configs.
-- `tests/`: unit tests and small synthetic fixtures.
-- `ros2/`: optional TurtleBot4 helper scripts for future data collection.
-- `docs/`: schema, release policy, reproduction notes, and dataset/benchmark
-  cards.
+  The main reproduction configuration is:
 
-## Dataset Synchronization
-
-The NeurIPS config uses repository-relative paths such as
-`data/processed/env1_A_mapping/map.yaml`. To reproduce the released results,
-place the dataset release contents under this code folder so the code root has a
-`data/` directory:
-
-```bash
-unzip dataset_neurips2026_sanitized.zip
-cp -a dataset_neurips2026_sanitized/data ./data
-```
-
-After that, the expected layout is:
-
-```text
-code_neurips2026_sanitized/
+  ```bash
   configs/experiment_neurips2026.yaml
-  data/processed/
-  data/filtered/
-  data/results/
-  data/paper_assets/
-  data/annotations/
-  scripts/
-  src/
-```
 
-Do not rename the `env*` run folders or the `data/` subdirectories. The config,
-dataset, result CSVs, and paper values all use the same run IDs.
+  ## Dataset Setup
 
-The dataset also contains five legacy processed `run_*` folders retained for
-audit and future extension. Those legacy folders are not referenced by
-`configs/experiment_neurips2026.yaml` and are not included in the NeurIPS 2026
-reported aggregate results, figures, or tables.
+  To reproduce the released results, the repository root must contain a data/
+  directory from the matching sanitized dataset release.
 
-## Environment
+  The expected layout is:
 
-Using `venv`:
+  privatemap-bench/
+    configs/experiment_neurips2026.yaml
+    data/processed/
+    data/filtered/
+    data/results/
+    data/paper_assets/
+    data/annotations/
+    scripts/
+    src/
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-pip install -e .
-```
+  Do not rename the env* run folders or any data/ subdirectories. The
+  configuration, dataset, result CSVs, generated figures/tables, and reported
+  paper values all use the same run IDs.
 
-Using conda:
+  The dataset may also contain five legacy processed run_* folders retained for
+  audit and future extension. These legacy folders are not referenced by
+  configs/experiment_neurips2026.yaml and are not included in the NeurIPS 2026
+  reported aggregate results, figures, or tables.
 
-```bash
-conda env create -f environment.yml
-conda activate privatemap-bench
-pip install -e .
-```
+  ## Environment
 
-## Reproduce Results
+  Using venv:
 
-From the code release root, after placing the dataset `data/` directory:
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install -r requirements.txt
+  pip install -e .
 
-```bash
-python3 scripts/04_run_filters.py --config configs/experiment_neurips2026.yaml
-python3 scripts/05_run_attacks.py --config configs/experiment_neurips2026.yaml
-python3 scripts/06_run_utility_eval.py --config configs/experiment_neurips2026.yaml
-python3 scripts/07_aggregate_results.py --config configs/experiment_neurips2026.yaml
-python3 scripts/10_build_paper_assets.py --config configs/experiment_neurips2026.yaml
-```
+  Using conda:
 
-Expected reported scale:
+  conda env create -f environment.yml
+  conda activate privatemap-bench
+  pip install -e .
 
-- 15 NeurIPS runs across 3 layout variants.
-- 300 logical filtered artifacts.
-- 2310 privacy result rows.
-- 5580 utility result rows.
-- 1126 aggregate result rows.
+  ## Reproduce Results
 
-## Quick Verification
+  From the repository root, after adding the dataset data/ directory:
 
-```bash
-pytest -q
-python3 scripts/11_validate_submission_readiness.py --config configs/experiment_neurips2026.yaml
-```
+  python3 scripts/04_run_filters.py --config configs/experiment_neurips2026.yaml
+  python3 scripts/05_run_attacks.py --config configs/experiment_neurips2026.yaml
+  python3 scripts/06_run_utility_eval.py --config configs/experiment_neurips2026.yaml
+  python3 scripts/07_aggregate_results.py --config configs/experiment_neurips2026.yaml
+  python3 scripts/10_build_paper_assets.py --config configs/experiment_neurips2026.yaml
 
-The validation script checks processed-artifact paths and generated results. It
-may report paper-template checks only when the full paper tree is present; the
-paper tree is intentionally excluded from this code release.
+  Generated outputs are written to:
+
+  - data/results/privacy_results.csv
+  - data/results/utility_results.csv
+  - data/results/aggregated_results.csv
+  - data/results/aggregated_results.json
+  - data/paper_assets/figures/
+  - data/paper_assets/tables/
+
+  Expected reported scale:
+
+  - 15 NeurIPS runs across 3 layout variants.
+  - 300 logical filtered artifacts.
+  - 2310 privacy result rows.
+  - 5580 utility result rows.
+  - 1126 aggregate result rows.
+
+  ## Quick Verification
+
+  Run the unit tests:
+
+  pytest -q
+
+  Validate the synchronized NeurIPS release package:
+
+  python3 scripts/11_validate_submission_readiness.py --config configs/experiment_neurips2026.yaml
+
+  The validation script checks configured processed-artifact paths, generated
+  result files, and generated paper assets. Paper-template checks may only run when
+  the full local paper tree is present; the paper tree is intentionally excluded
+  from this anonymous code release.
+
+  ## Privacy and Release Policy
+
+  Indoor robot data can expose people, screens, documents, floor plans, routines,
+  and other sensitive information. This release is designed to contain only
+  reviewed processed artifacts and generated benchmark outputs.
+
+  Do not commit or publish raw ROS bags, unreviewed RGB keyframes, contact sheets,
+  raw camera images, private local paths, or identifying metadata.
+
+  See the following documents for release details:
+
+  - docs/data_release_policy.md
+  - docs/dataset_card_neurips2026.md
+  - docs/benchmark_card_neurips2026.md
+  - docs/reproduce_neurips2026.md
+
+  ## Optional Future Data Collection
+
+  The ros2/ helper scripts document the TurtleBot4 collection workflow used by
+  the project. Raw data collection is not required to reproduce the NeurIPS 2026
+  processed-artifact benchmark results.
+
+  Raw ROS bags and raw camera data must remain outside the public code release.
+
+  ## License
+
+  See LICENSE for repository licensing. External assets, TurtleBot4 software,
+  ROS 2 packages, and conference templates may have separate licenses.
